@@ -25,4 +25,13 @@ public class LongParity {
     }
     return parity;
   }
+
+  private static int[] SHIFT_WIDTHS_IN_BITS = { 32, 16, 8, 4, 2, 1 };
+
+  public static int computeViaAssociation(long v) {
+    for (int shiftWidth : SHIFT_WIDTHS_IN_BITS) {
+      v ^= (v >>> shiftWidth);
+    }
+    return (int)(v & 1);
+  }
 }

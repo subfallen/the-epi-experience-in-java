@@ -7,9 +7,18 @@ class LongParitySpec extends Specification {
   def NUM_PARAMETERIZATIONS = 10
 
   @Unroll
-  def 'parity of #vWithParity.v is #vWithParity.parity'() {
+  def 'parity (via cache) of #vWithParity.v is #vWithParity.parity'() {
     expect:
     LongParity.compute(vWithParity.v) == vWithParity.parity
+
+    where:
+    vWithParity << (1..NUM_PARAMETERIZATIONS).collect { randomParameterization() }
+  }
+
+  @Unroll
+  def 'parity (via associativity) of #vWithParity.v is #vWithParity.parity'() {
+    expect:
+    LongParity.computeViaAssociation(vWithParity.v) == vWithParity.parity
 
     where:
     vWithParity << (1..NUM_PARAMETERIZATIONS).collect { randomParameterization() }
