@@ -22,10 +22,10 @@ public class NodesByDepth {
             var next = queue.poll();
             var node = next.getKey();
             int lvlHere = next.getValue();     
-            if (node.left() != NONE) {
+            if (node.left() != null) {
                 queue.offer(entry(node.left(), lvlHere + 1));
             }
-            if (node.right() != NONE) {
+            if (node.right() != null) {
                 queue.offer(entry(node.right(), lvlHere + 1));
             }
             if (lvlHere > curLvl) {

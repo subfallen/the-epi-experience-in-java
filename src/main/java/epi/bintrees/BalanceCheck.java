@@ -12,7 +12,7 @@ public class BalanceCheck {
     }
 
     private static int height(TreeNode node, AtomicBoolean isBalanced) {
-        if (node == NONE) {
+        if (node == null) {
             return -1;
         } else {
             int l = height(node.left(), isBalanced), r = height(node.right(), isBalanced);

@@ -14,7 +14,7 @@ public class BstOrderNoRecursion {
     enum TraversalState { NEITHER_CHILD, LEFT_CHILD, BOTH_CHILDREN }
 
     public static <T> List<T> orderedValues(TreeNode<T> root) {
-        if (root == TreeNode.NONE) {
+        if (root == null) {
             return Collections.emptyList();
         }
 
@@ -22,8 +22,8 @@ public class BstOrderNoRecursion {
         Deque<TreeNode<T>> traversedNotValued = new ArrayDeque<>();
         TreeNode<T> nextNode = root;
 
-        while (nextNode != TreeNode.NONE || !traversedNotValued.isEmpty()) {
-            if (nextNode != TreeNode.NONE) {
+        while (nextNode != null || !traversedNotValued.isEmpty()) {
+            if (nextNode != null) {
                 traversedNotValued.push(nextNode);
                 nextNode = nextNode.left();
             } else {
