@@ -36,9 +36,10 @@ class RandomPermSpec extends Specification {
         def mathCtx = new MathContext(10)
         def sigma = ((1 / distinct) * (1 - (1 / distinct)) * n).sqrt(mathCtx).intValue()
         def mu = (n / distinct).intValue()
-        println "Each of the $distinct keys should have about $mu +/- ${3 * sigma} appearances"
-        def low = mu - (3 * sigma)
-        def high = mu + (3 * sigma)
+        def maxSigmas = 4
+        println "Each of the $distinct keys should have within $mu +/- ${maxSigmas * sigma} appearances"
+        def low = mu - (maxSigmas * sigma)
+        def high = mu + (maxSigmas * sigma)
 
         then:
         counts.every {

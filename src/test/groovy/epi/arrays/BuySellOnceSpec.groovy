@@ -10,7 +10,7 @@ import static epi.arrays.BuySellOnce.maxValue
 
 class BuySellOnceSpec extends Specification {
   @Unroll
-  def 'optimizes #prices'() {
+  def 'optimizes random prices #iterationCount'() {
     given:
     def actual = maxValue(l)
     println "Max derived as $actual for :: $l"
